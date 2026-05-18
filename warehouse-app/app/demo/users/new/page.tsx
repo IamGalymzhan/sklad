@@ -13,39 +13,39 @@ export default function DemoUserNew() {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!f.name.trim() || !f.email.trim()) { setError("Заполните обязательные поля"); return; }
+    if (!f.name.trim() || !f.email.trim()) { setError("Міндетті өрістерді толтырыңыз"); return; }
     dispatch({
       type: "CREATE_USER",
       u: { id: genId(), name: f.name.trim(), email: f.email.trim(), role: f.role, isActive: true, createdAt: now() },
     });
-    dispatch({ type: "NOTIFY", message: "Пользователь создан", kind: "success" });
+    dispatch({ type: "NOTIFY", message: "Пайдаланушы құрылды", kind: "success" });
     router.push("/demo/users");
   }
 
   return (
     <div className="space-y-4 max-w-lg">
       <div>
-        <button onClick={() => router.back()} className="text-xs text-blue-600 hover:underline mb-1 block">← Назад к пользователям</button>
-        <h1 className="text-xl font-semibold">Новый пользователь</h1>
+        <button onClick={() => router.back()} className="text-xs text-blue-600 hover:underline mb-1 block">← Пайдаланушыларға қайту</button>
+        <h1 className="text-xl font-semibold">Жаңа пайдаланушы</h1>
       </div>
 
       <form onSubmit={handleSubmit} className="bg-white border border-gray-200 rounded-lg p-6 space-y-4">
-        <F label="Полное имя *"><input value={f.name} onChange={(e) => setF((x) => ({ ...x, name: e.target.value }))} className={inp} required /></F>
+        <F label="Толық аты *"><input value={f.name} onChange={(e) => setF((x) => ({ ...x, name: e.target.value }))} className={inp} required /></F>
         <F label="Email *"><input type="email" value={f.email} onChange={(e) => setF((x) => ({ ...x, email: e.target.value }))} className={inp} required /></F>
-        <F label="Роль *">
+        <F label="Рөлі *">
           <select value={f.role} onChange={(e) => setF((x) => ({ ...x, role: e.target.value as typeof f.role }))} className={inp}>
-            <option value="ADMIN">Администратор</option>
-            <option value="STOREKEEPER">Кладовщик</option>
+            <option value="ADMIN">Әкімші</option>
+            <option value="STOREKEEPER">Қойма меңгерушісі</option>
             <option value="MANAGER">Менеджер</option>
           </select>
         </F>
         <div className="bg-yellow-50 border border-yellow-200 rounded p-3 text-xs text-yellow-700">
-          В демо-режиме пароль не задаётся. В рабочей системе новый пользователь получит письмо с ссылкой для входа.
+          Демо-режимде құпиясөз тағайындалмайды. Жұмыс жүйесінде жаңа пайдаланушы кіруге арналған сілтемесі бар хат алады.
         </div>
         {error && <p className="text-sm text-red-600">{error}</p>}
         <div className="flex gap-3">
-          <button type="submit" className="px-5 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700">Создать</button>
-          <button type="button" onClick={() => router.back()} className="px-5 py-2 border border-gray-300 text-gray-700 text-sm rounded-lg hover:bg-gray-50">Отмена</button>
+          <button type="submit" className="px-5 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700">Құру</button>
+          <button type="button" onClick={() => router.back()} className="px-5 py-2 border border-gray-300 text-gray-700 text-sm rounded-lg hover:bg-gray-50">Болдырмау</button>
         </div>
       </form>
     </div>

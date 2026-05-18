@@ -5,7 +5,7 @@ import { useDemo } from "@/lib/demo/store";
 import { computeStock } from "@/lib/demo/types";
 
 const movLabel: Record<string, string> = {
-  RECEIPT: "Поступление", ISSUE: "Выдача", TRANSFER_OUT: "Перемещение (−)", TRANSFER_IN: "Перемещение (+)",
+  RECEIPT: "Кіріс", ISSUE: "Шығыс", TRANSFER_OUT: "Ауыстыру (−)", TRANSFER_IN: "Ауыстыру (+)",
 };
 const movColor: Record<string, string> = {
   RECEIPT: "bg-green-100 text-green-700", ISSUE: "bg-orange-100 text-orange-700",
@@ -26,30 +26,30 @@ export default function DemoDashboard() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-xl font-semibold text-gray-900">Дашборд</h1>
-        <p className="text-sm text-gray-500 mt-0.5">Сводная информация по складу — 18 мая 2026</p>
+        <h1 className="text-xl font-semibold text-gray-900">Басты бет</h1>
+        <p className="text-sm text-gray-500 mt-0.5">Қойма бойынша жиынтық ақпарат — 2026 жылғы 18 мамыр</p>
       </div>
 
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-        <StatCard label="Товаров в каталоге" value={products.filter((p) => p.isActive).length} color="blue" href="/demo/products" />
-        <StatCard label="Активных складов" value={warehouses.filter((w) => w.isActive).length} color="indigo" href="/demo/warehouses" />
-        <StatCard label="Черновых документов" value={drafts} color="yellow" href="/demo/documents/receipts" />
-        <StatCard label="Дефицитных позиций" value={lowStock} color={lowStock > 0 ? "red" : "green"} href="/demo/stock" />
+        <StatCard label="Каталогтағы тауарлар" value={products.filter((p) => p.isActive).length} color="blue" href="/demo/products" />
+        <StatCard label="Белсенді қоймалар" value={warehouses.filter((w) => w.isActive).length} color="indigo" href="/demo/warehouses" />
+        <StatCard label="Жоба құжаттар" value={drafts} color="yellow" href="/demo/documents/receipts" />
+        <StatCard label="Тапшы позициялар" value={lowStock} color={lowStock > 0 ? "red" : "green"} href="/demo/stock" />
       </div>
 
       <div className="grid grid-cols-3 gap-4">
         <div className="bg-white border border-gray-200 rounded-lg p-4 col-span-2">
           <div className="flex items-center justify-between mb-3">
-            <h2 className="font-medium text-gray-900 text-sm">Последние движения</h2>
-            <Link href="/demo/stock" className="text-xs text-blue-600 hover:underline">Все остатки →</Link>
+            <h2 className="font-medium text-gray-900 text-sm">Соңғы қозғалыстар</h2>
+            <Link href="/demo/stock" className="text-xs text-blue-600 hover:underline">Барлық қалдықтар →</Link>
           </div>
           <table className="min-w-full text-sm">
             <thead>
               <tr className="text-xs text-gray-500 border-b border-gray-100">
-                <th className="text-left pb-2 font-medium">Товар</th>
-                <th className="text-left pb-2 font-medium">Тип</th>
-                <th className="text-right pb-2 font-medium">Кол-во</th>
-                <th className="text-left pb-2 font-medium pl-3">Дата</th>
+                <th className="text-left pb-2 font-medium">Тауар</th>
+                <th className="text-left pb-2 font-medium">Түрі</th>
+                <th className="text-right pb-2 font-medium">Саны</th>
+                <th className="text-left pb-2 font-medium pl-3">Күні</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-50">
@@ -75,10 +75,10 @@ export default function DemoDashboard() {
         </div>
 
         <div className="space-y-3">
-          <QuickLink href="/demo/documents/receipts/new" label="Оформить поступление" color="green" />
-          <QuickLink href="/demo/documents/issues/new" label="Оформить выдачу" color="orange" />
-          <QuickLink href="/demo/documents/transfers/new" label="Создать перемещение" color="blue" />
-          <QuickLink href="/demo/reports/stock" label="Отчёт по остаткам" color="gray" />
+          <QuickLink href="/demo/documents/receipts/new" label="Кірісті ресімдеу" color="green" />
+          <QuickLink href="/demo/documents/issues/new" label="Шығысты ресімдеу" color="orange" />
+          <QuickLink href="/demo/documents/transfers/new" label="Ауыстыру құру" color="blue" />
+          <QuickLink href="/demo/reports/stock" label="Қалдықтар бойынша есеп" color="gray" />
         </div>
       </div>
     </div>

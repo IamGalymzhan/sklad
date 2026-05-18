@@ -84,7 +84,7 @@ function reducer(state: DemoState, action: Action): DemoState {
       const stock = computeStock(state.movements);
       for (const item of doc.items) {
         const balance = stock.find((b) => b.productId === item.productId && b.warehouseId === doc.warehouseId && b.storageLocationId === item.storageLocationId);
-        if (!balance || balance.quantity < item.quantity) return { ...state, notification: { message: "Недостаточный остаток для подтверждения!", kind: "error" } };
+        if (!balance || balance.quantity < item.quantity) return { ...state, notification: { message: "Растау үшін қалдық жеткіліксіз!", kind: "error" } };
       }
       const newMovements: StockMovement[] = doc.items.map((item) => ({
         id: genId(), productId: item.productId, warehouseId: doc.warehouseId, storageLocationId: item.storageLocationId,
@@ -109,7 +109,7 @@ function reducer(state: DemoState, action: Action): DemoState {
       for (const item of doc.items) {
         const fromLoc = item.fromStorageLocationId!;
         const balance = stock.find((b) => b.productId === item.productId && b.warehouseId === doc.fromWarehouseId && b.storageLocationId === fromLoc);
-        if (!balance || balance.quantity < item.quantity) return { ...state, notification: { message: "Недостаточный остаток для перемещения!", kind: "error" } };
+        if (!balance || balance.quantity < item.quantity) return { ...state, notification: { message: "Ауыстыру үшін қалдық жеткіліксіз!", kind: "error" } };
       }
       const newMovements: StockMovement[] = doc.items.flatMap((item) => [
         { id: genId(), productId: item.productId, warehouseId: doc.fromWarehouseId, storageLocationId: item.fromStorageLocationId!, quantityChange: -item.quantity, movementType: "TRANSFER_OUT" as const, sourceDocumentType: "TransferDocument", sourceDocumentId: doc.id, createdById: "u-store", createdAt: now() },

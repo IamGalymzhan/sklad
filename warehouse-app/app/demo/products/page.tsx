@@ -19,18 +19,18 @@ export default function DemoProducts() {
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-xl font-semibold text-gray-900">Товары</h1>
-          <p className="text-sm text-gray-500">Каталог товарных позиций</p>
+          <h1 className="text-xl font-semibold text-gray-900">Тауарлар</h1>
+          <p className="text-sm text-gray-500">Тауар позицияларының каталогы</p>
         </div>
         <Link href="/demo/products/new" className="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700">
-          + Создать товар
+          + Тауар құру
         </Link>
       </div>
 
       <div className="flex gap-3">
-        <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Поиск по названию или SKU..." className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Атауы немесе SKU бойынша іздеу..." className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
         <select value={catFilter} onChange={(e) => setCatFilter(e.target.value)} className="px-3 py-2 border border-gray-300 rounded-lg text-sm">
-          <option value="">Все категории</option>
+          <option value="">Барлық санаттар</option>
           {state.categories.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}
         </select>
       </div>
@@ -39,8 +39,8 @@ export default function DemoProducts() {
         <table className="min-w-full divide-y divide-gray-200 text-sm">
           <thead className="bg-gray-50">
             <tr>
-              {["Название", "Артикул", "Категория", "Ед. изм.", "Мин. остаток", "Статус", ""].map((h) => (
-                <th key={h} className={`px-4 py-3 font-medium text-gray-500 ${h === "Мин. остаток" || h === "" ? "text-right" : "text-left"}`}>{h}</th>
+              {["Атауы", "Артикул", "Санаты", "Өлш. бір.", "Мин. қалдық", "Күйі", ""].map((h) => (
+                <th key={h} className={`px-4 py-3 font-medium text-gray-500 ${h === "Мин. қалдық" || h === "" ? "text-right" : "text-left"}`}>{h}</th>
               ))}
             </tr>
           </thead>
@@ -57,16 +57,16 @@ export default function DemoProducts() {
                   <td className="px-4 py-3 text-right">{p.minStock}</td>
                   <td className="px-4 py-3">
                     <span className={`inline-block px-2 py-0.5 rounded-full text-xs font-medium ${p.isActive ? "bg-green-100 text-green-700" : "bg-gray-100 text-gray-500"}`}>
-                      {p.isActive ? "Активен" : "Неактивен"}
+                      {p.isActive ? "Белсенді" : "Белсенді емес"}
                     </span>
                   </td>
                   <td className="px-4 py-3 text-right">
-                    <Link href={`/demo/products/${p.id}`} className="text-blue-600 hover:underline text-xs">Изменить</Link>
+                    <Link href={`/demo/products/${p.id}`} className="text-blue-600 hover:underline text-xs">Өңдеу</Link>
                   </td>
                 </tr>
               );
             })}
-            {products.length === 0 && <tr><td colSpan={7} className="px-4 py-8 text-center text-gray-400">Ничего не найдено</td></tr>}
+            {products.length === 0 && <tr><td colSpan={7} className="px-4 py-8 text-center text-gray-400">Ештеңе табылмады</td></tr>}
           </tbody>
         </table>
       </div>

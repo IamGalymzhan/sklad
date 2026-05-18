@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useDemo } from "@/lib/demo/store";
 
-const ROLE_LABELS: Record<string, string> = { ADMIN: "Администратор", STOREKEEPER: "Кладовщик", MANAGER: "Менеджер" };
+const ROLE_LABELS: Record<string, string> = { ADMIN: "Әкімші", STOREKEEPER: "Қойма меңгерушісі", MANAGER: "Менеджер" };
 const ROLE_COLORS: Record<string, string> = { ADMIN: "bg-purple-100 text-purple-700", STOREKEEPER: "bg-blue-100 text-blue-700", MANAGER: "bg-green-100 text-green-700" };
 
 export default function DemoUsers() {
@@ -12,19 +12,19 @@ export default function DemoUsers() {
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <div><h1 className="text-xl font-semibold">Пользователи</h1><p className="text-sm text-gray-500">Управление доступом</p></div>
-        <Link href="/demo/users/new" className="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700">+ Добавить пользователя</Link>
+        <div><h1 className="text-xl font-semibold">Пайдаланушылар</h1><p className="text-sm text-gray-500">Қол жетімділікті басқару</p></div>
+        <Link href="/demo/users/new" className="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700">+ Пайдаланушы қосу</Link>
       </div>
 
       <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
         <table className="min-w-full divide-y divide-gray-200 text-sm">
           <thead className="bg-gray-50">
             <tr>
-              <th className="px-4 py-3 text-left font-medium text-gray-500">Имя</th>
+              <th className="px-4 py-3 text-left font-medium text-gray-500">Аты</th>
               <th className="px-4 py-3 text-left font-medium text-gray-500">Email</th>
-              <th className="px-4 py-3 text-left font-medium text-gray-500">Роль</th>
-              <th className="px-4 py-3 text-left font-medium text-gray-500">Статус</th>
-              <th className="px-4 py-3 text-left font-medium text-gray-500">Добавлен</th>
+              <th className="px-4 py-3 text-left font-medium text-gray-500">Рөлі</th>
+              <th className="px-4 py-3 text-left font-medium text-gray-500">Күйі</th>
+              <th className="px-4 py-3 text-left font-medium text-gray-500">Қосылды</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
@@ -39,7 +39,7 @@ export default function DemoUsers() {
                 </td>
                 <td className="px-4 py-3">
                   <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${u.isActive ? "bg-green-100 text-green-700" : "bg-gray-100 text-gray-500"}`}>
-                    {u.isActive ? "Активен" : "Отключён"}
+                    {u.isActive ? "Белсенді" : "Өшірілген"}
                   </span>
                 </td>
                 <td className="px-4 py-3 text-gray-500">{u.createdAt.split("T")[0]}</td>

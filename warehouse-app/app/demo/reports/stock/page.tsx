@@ -23,30 +23,30 @@ export default function DemoStockReport() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-xl font-semibold">Отчёт: Остатки на складах</h1>
-        <p className="text-sm text-gray-500">Сводный отчёт по всем товарным позициям</p>
+        <h1 className="text-xl font-semibold">Есеп: Қоймалардағы қалдықтар</h1>
+        <p className="text-sm text-gray-500">Барлық тауар позициялары бойынша жиынтық есеп</p>
       </div>
 
       <div className="grid grid-cols-4 gap-4">
-        <StatCard label="Всего позиций" value={String(state.products.length)} color="blue" />
-        <StatCard label="Мест хранения" value={String(totalPositions)} color="gray" />
-        <StatCard label="Критичных остатков" value={String(lowCount)} color="red" />
-        <StatCard label="Нет в наличии" value={String(outOfStock)} color="orange" />
+        <StatCard label="Барлық позициялар" value={String(state.products.length)} color="blue" />
+        <StatCard label="Сақтау орындары" value={String(totalPositions)} color="gray" />
+        <StatCard label="Дағдарысты қалдықтар" value={String(lowCount)} color="red" />
+        <StatCard label="Қоймада жоқ" value={String(outOfStock)} color="orange" />
       </div>
 
       <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
         <div className="px-4 py-3 border-b border-gray-200 bg-gray-50">
-          <h2 className="text-sm font-semibold text-gray-700">Сводка по товарам</h2>
+          <h2 className="text-sm font-semibold text-gray-700">Тауарлар бойынша жиынтық</h2>
         </div>
         <table className="min-w-full divide-y divide-gray-200 text-sm">
           <thead className="bg-gray-50">
             <tr>
-              <th className="px-4 py-3 text-left font-medium text-gray-500">Товар</th>
-              <th className="px-4 py-3 text-left font-medium text-gray-500">Категория</th>
-              <th className="px-4 py-3 text-right font-medium text-gray-500">Итого кол-во</th>
-              <th className="px-4 py-3 text-right font-medium text-gray-500">Мин. остаток</th>
-              <th className="px-4 py-3 text-right font-medium text-gray-500">Мест хранения</th>
-              <th className="px-4 py-3 text-center font-medium text-gray-500">Статус</th>
+              <th className="px-4 py-3 text-left font-medium text-gray-500">Тауар</th>
+              <th className="px-4 py-3 text-left font-medium text-gray-500">Санаты</th>
+              <th className="px-4 py-3 text-right font-medium text-gray-500">Барлық саны</th>
+              <th className="px-4 py-3 text-right font-medium text-gray-500">Мин. қалдық</th>
+              <th className="px-4 py-3 text-right font-medium text-gray-500">Сақтау орындары</th>
+              <th className="px-4 py-3 text-center font-medium text-gray-500">Күйі</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
@@ -64,10 +64,10 @@ export default function DemoStockReport() {
                 <td className="px-4 py-3 text-right text-gray-500">{positions.length}</td>
                 <td className="px-4 py-3 text-center">
                   {totalQty === 0
-                    ? <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-500">Нет</span>
+                    ? <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-500">Жоқ</span>
                     : isLow
-                      ? <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-700">Критично</span>
-                      : <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-700">Норма</span>
+                      ? <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-700">Дағдарысты</span>
+                      : <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-700">Қалыпты</span>
                   }
                 </td>
               </tr>
@@ -78,7 +78,7 @@ export default function DemoStockReport() {
 
       <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
         <div className="px-4 py-3 border-b border-gray-200 bg-gray-50">
-          <h2 className="text-sm font-semibold text-gray-700">Распределение по складам</h2>
+          <h2 className="text-sm font-semibold text-gray-700">Қоймалар бойынша таралуы</h2>
         </div>
         <div className="divide-y divide-gray-100">
           {state.warehouses.map((wh) => {
@@ -91,8 +91,8 @@ export default function DemoStockReport() {
                   <div className="text-xs text-gray-500">{wh.address}</div>
                 </div>
                 <div className="text-right">
-                  <div className="text-sm font-semibold text-gray-700">{uniqueProducts} наименований</div>
-                  <div className="text-xs text-gray-400">{whStock.length} мест хранения</div>
+                  <div className="text-sm font-semibold text-gray-700">{uniqueProducts} атау</div>
+                  <div className="text-xs text-gray-400">{whStock.length} сақтау орны</div>
                 </div>
               </div>
             );

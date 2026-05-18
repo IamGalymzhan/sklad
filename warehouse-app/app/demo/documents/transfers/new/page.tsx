@@ -36,9 +36,9 @@ export default function DemoTransferNew() {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!fromWarehouseId || !toWarehouseId) { setError("Выберите склады отправитель и получатель"); return; }
-    if (fromWarehouseId === toWarehouseId) { setError("Склады должны быть разными"); return; }
-    if (items.some((r) => !r.productId || !r.fromLocationId || !r.toLocationId || !r.quantity)) { setError("Заполните все строки товаров"); return; }
+    if (!fromWarehouseId || !toWarehouseId) { setError("Жөнелтуші мен алушы қоймаларды таңдаңыз"); return; }
+    if (fromWarehouseId === toWarehouseId) { setError("Қоймалар әртүрлі болуы керек"); return; }
+    if (items.some((r) => !r.productId || !r.fromLocationId || !r.toLocationId || !r.quantity)) { setError("Тауарлардың барлық жолдарын толтырыңыз"); return; }
 
     const nextNum = `TRF-${1000 + state.transfers.length + 1}`;
     const docItems: DocItem[] = items.map((r) => ({
@@ -51,7 +51,7 @@ export default function DemoTransferNew() {
       type: "CREATE_TRANSFER",
       doc: { id: genId(), documentNumber: nextNum, fromWarehouseId, toWarehouseId, date, status: "DRAFT", comment: comment.trim() || undefined, createdById: "u-store", createdAt: now(), items: docItems },
     });
-    dispatch({ type: "NOTIFY", message: `Документ ${nextNum} создан`, kind: "success" });
+    dispatch({ type: "NOTIFY", message: `${nextNum} құжаты құрылды`, kind: "success" });
     router.push("/demo/documents/transfers");
   }
 

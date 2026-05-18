@@ -30,8 +30,8 @@ export default function DemoReceiptNew() {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!supplierId || !warehouseId) { setError("Выберите поставщика и склад"); return; }
-    if (items.some((r) => !r.productId || !r.storageLocationId || !r.quantity)) { setError("Заполните все строки товаров"); return; }
+    if (!supplierId || !warehouseId) { setError("Жеткізуші мен қойманы таңдаңыз"); return; }
+    if (items.some((r) => !r.productId || !r.storageLocationId || !r.quantity)) { setError("Тауарлардың барлық жолдарын толтырыңыз"); return; }
 
     const nextNum = `REC-${1000 + state.receipts.length + 1}`;
     const docItems: DocItem[] = items.map((r) => ({
@@ -43,66 +43,66 @@ export default function DemoReceiptNew() {
       type: "CREATE_RECEIPT",
       doc: { id: genId(), documentNumber: nextNum, supplierId, warehouseId, date, status: "DRAFT", comment: comment.trim() || undefined, createdById: "u-store", createdAt: now(), items: docItems },
     });
-    dispatch({ type: "NOTIFY", message: `Документ ${nextNum} создан`, kind: "success" });
+    dispatch({ type: "NOTIFY", message: `${nextNum} құжаты құрылды`, kind: "success" });
     router.push("/demo/documents/receipts");
   }
 
   return (
     <div className="space-y-6 max-w-3xl">
       <div>
-        <button onClick={() => router.back()} className="text-xs text-blue-600 hover:underline mb-1 block">← Назад</button>
-        <h1 className="text-xl font-semibold">Новое поступление</h1>
+        <button onClick={() => router.back()} className="text-xs text-blue-600 hover:underline mb-1 block">← Артқа</button>
+        <h1 className="text-xl font-semibold">Жаңа кіріс</h1>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="bg-white border border-gray-200 rounded-lg p-5 space-y-4">
-          <h2 className="text-sm font-semibold text-gray-700">Реквизиты документа</h2>
+          <h2 className="text-sm font-semibold text-gray-700">Құжаттың деректемелері</h2>
           <div className="grid grid-cols-2 gap-4">
-            <F label="Поставщик *">
+            <F label="Жеткізуші *">
               <select value={supplierId} onChange={(e) => setSupplierId(e.target.value)} className={inp} required>
-                <option value="">— выберите —</option>
+                <option value="">— таңдаңыз —</option>
                 {state.suppliers.map((s) => <option key={s.id} value={s.id}>{s.name}</option>)}
               </select>
             </F>
-            <F label="Склад *">
+            <F label="Қойма *">
               <select value={warehouseId} onChange={(e) => { setWarehouseId(e.target.value); setItems([{ productId: "", storageLocationId: "", quantity: "", unitPrice: "" }]); }} className={inp} required>
-                <option value="">— выберите —</option>
+                <option value="">— таңдаңыз —</option>
                 {state.warehouses.map((w) => <option key={w.id} value={w.id}>{w.name}</option>)}
               </select>
             </F>
-            <F label="Дата"><input type="date" value={date} onChange={(e) => setDate(e.target.value)} className={inp} required /></F>
-            <F label="Комментарий"><input value={comment} onChange={(e) => setComment(e.target.value)} className={inp} /></F>
+            <F label="Күні"><input type="date" value={date} onChange={(e) => setDate(e.target.value)} className={inp} required /></F>
+            <F label="Ескертпе"><input value={comment} onChange={(e) => setComment(e.target.value)} className={inp} /></F>
           </div>
         </div>
 
         <div className="bg-white border border-gray-200 rounded-lg p-5 space-y-3">
           <div className="flex items-center justify-between">
-            <h2 className="text-sm font-semibold text-gray-700">Товарные позиции</h2>
-            <button type="button" onClick={addItem} className="text-xs text-blue-600 hover:underline">+ Добавить строку</button>
+            <h2 className="text-sm font-semibold text-gray-700">Тауар позициялары</h2>
+            <button type="button" onClick={addItem} className="text-xs text-blue-600 hover:underline">+ Жол қосу</button>
           </div>
           <div className="space-y-2">
             {items.map((row, i) => (
               <div key={i} className="flex gap-2 items-end">
                 <div className="flex-1">
-                  {i === 0 && <label className="text-xs text-gray-500 block mb-1">Товар *</label>}
+                  {i === 0 && <label className="text-xs text-gray-500 block mb-1">Тауар *</label>}
                   <select value={row.productId} onChange={(e) => setItem(i, "productId", e.target.value)} className={inp} required>
-                    <option value="">— товар —</option>
+                    <option value="">— тауар —</option>
                     {state.products.map((p) => <option key={p.id} value={p.id}>{p.name} ({p.sku})</option>)}
                   </select>
                 </div>
                 <div className="w-44">
-                  {i === 0 && <label className="text-xs text-gray-500 block mb-1">Место хранения *</label>}
+                  {i === 0 && <label className="text-xs text-gray-500 block mb-1">Сақтау орны *</label>}
                   <select value={row.storageLocationId} onChange={(e) => setItem(i, "storageLocationId", e.target.value)} className={inp} required disabled={!warehouseId}>
-                    <option value="">— место —</option>
+                    <option value="">— орын —</option>
                     {whLocations.map((l) => <option key={l.id} value={l.id}>{l.code} — {l.name}</option>)}
                   </select>
                 </div>
                 <div className="w-24">
-                  {i === 0 && <label className="text-xs text-gray-500 block mb-1">Кол-во *</label>}
+                  {i === 0 && <label className="text-xs text-gray-500 block mb-1">Саны *</label>}
                   <input type="number" min="0.001" step="any" value={row.quantity} onChange={(e) => setItem(i, "quantity", e.target.value)} className={inp} required placeholder="0" />
                 </div>
                 <div className="w-28">
-                  {i === 0 && <label className="text-xs text-gray-500 block mb-1">Цена (₸)</label>}
+                  {i === 0 && <label className="text-xs text-gray-500 block mb-1">Бағасы (₸)</label>}
                   <input type="number" min="0" step="any" value={row.unitPrice} onChange={(e) => setItem(i, "unitPrice", e.target.value)} className={inp} placeholder="0" />
                 </div>
                 {items.length > 1 && (
@@ -113,7 +113,7 @@ export default function DemoReceiptNew() {
           </div>
           {items.length > 0 && items.some((r) => r.quantity && r.unitPrice) && (
             <div className="text-right text-sm font-semibold text-gray-700 pt-2 border-t border-gray-100">
-              Итого: {items.reduce((s, r) => s + (parseFloat(r.quantity) || 0) * (parseFloat(r.unitPrice) || 0), 0).toLocaleString("ru-RU")} ₸
+              Барлығы: {items.reduce((s, r) => s + (parseFloat(r.quantity) || 0) * (parseFloat(r.unitPrice) || 0), 0).toLocaleString("kk-KZ")} ₸
             </div>
           )}
         </div>
@@ -121,8 +121,8 @@ export default function DemoReceiptNew() {
         {error && <p className="text-sm text-red-600">{error}</p>}
 
         <div className="flex gap-3">
-          <button type="submit" className="px-5 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700">Создать черновик</button>
-          <button type="button" onClick={() => router.back()} className="px-5 py-2 border border-gray-300 text-gray-700 text-sm rounded-lg hover:bg-gray-50">Отмена</button>
+          <button type="submit" className="px-5 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700">Жоба құру</button>
+          <button type="button" onClick={() => router.back()} className="px-5 py-2 border border-gray-300 text-gray-700 text-sm rounded-lg hover:bg-gray-50">Болдырмау</button>
         </div>
       </form>
     </div>

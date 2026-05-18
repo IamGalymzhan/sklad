@@ -6,9 +6,9 @@ import { computeStock } from "@/lib/demo/types";
 
 function StatusBadge({ status }: { status: string }) {
   const map: Record<string, { label: string; cls: string }> = {
-    DRAFT: { label: "Черновик", cls: "bg-yellow-100 text-yellow-700" },
-    CONFIRMED: { label: "Проведён", cls: "bg-green-100 text-green-700" },
-    CANCELLED: { label: "Отменён", cls: "bg-gray-100 text-gray-500" },
+    DRAFT: { label: "Жоба", cls: "bg-yellow-100 text-yellow-700" },
+    CONFIRMED: { label: "Расталды", cls: "bg-green-100 text-green-700" },
+    CANCELLED: { label: "Болдырылмады", cls: "bg-gray-100 text-gray-500" },
   };
   const { label, cls } = map[status] ?? { label: status, cls: "bg-gray-100 text-gray-500" };
   return <span className={`inline-flex items-center px-2.5 py-1 rounded text-sm font-medium ${cls}`}>{label}</span>;
@@ -19,7 +19,7 @@ export default function DemoIssueDetail({ params }: { params: { id: string } }) 
   const { state, dispatch } = useDemo();
   const doc = state.issues.find((r) => r.id === params.id);
 
-  if (!doc) return <div className="p-8 text-gray-400">Документ не найден</div>;
+  if (!doc) return <div className="p-8 text-gray-400">Құжат табылмады</div>;
 
   const warehouse = state.warehouses.find((w) => w.id === doc.warehouseId);
   const stock = computeStock(state.movements);
@@ -37,7 +37,7 @@ export default function DemoIssueDetail({ params }: { params: { id: string } }) 
   return (
     <div className="space-y-6 max-w-3xl">
       <div>
-        <button onClick={() => router.back()} className="text-xs text-blue-600 hover:underline mb-1 block">← Назад к выдачам</button>
+        <button onClick={() => router.back()} className="text-xs text-blue-600 hover:underline mb-1 block">← Шығыстарға қайту</button>
         <div className="flex items-center gap-3">
           <h1 className="text-xl font-semibold font-mono">{doc.documentNumber}</h1>
           <StatusBadge status={doc.status} />
@@ -45,26 +45,26 @@ export default function DemoIssueDetail({ params }: { params: { id: string } }) 
       </div>
 
       <div className="bg-white border border-gray-200 rounded-lg p-5">
-        <h2 className="text-sm font-semibold text-gray-700 mb-3">Реквизиты</h2>
+        <h2 className="text-sm font-semibold text-gray-700 mb-3">Деректемелер</h2>
         <dl className="grid grid-cols-2 gap-x-6 gap-y-2 text-sm">
-          <div><dt className="text-gray-500">Получатель</dt><dd className="font-medium">{doc.recipientName}</dd></div>
-          <div><dt className="text-gray-500">Склад</dt><dd className="font-medium">{warehouse?.name ?? "—"}</dd></div>
-          <div><dt className="text-gray-500">Дата</dt><dd>{doc.date}</dd></div>
-          <div><dt className="text-gray-500">Создан</dt><dd>{new Date(doc.createdAt).toLocaleString("ru-RU", { day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit" })}</dd></div>
-          {doc.comment && <div className="col-span-2"><dt className="text-gray-500">Комментарий</dt><dd>{doc.comment}</dd></div>}
+          <div><dt className="text-gray-500">Алушы</dt><dd className="font-medium">{doc.recipientName}</dd></div>
+          <div><dt className="text-gray-500">Қойма</dt><dd className="font-medium">{warehouse?.name ?? "—"}</dd></div>
+          <div><dt className="text-gray-500">Күні</dt><dd>{doc.date}</dd></div>
+          <div><dt className="text-gray-500">Құрылды</dt><dd>{new Date(doc.createdAt).toLocaleString("kk-KZ", { day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit" })}</dd></div>
+          {doc.comment && <div className="col-span-2"><dt className="text-gray-500">Ескертпе</dt><dd>{doc.comment}</dd></div>}
         </dl>
       </div>
 
       <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
         <div className="px-4 py-3 border-b border-gray-100 bg-gray-50">
-          <h2 className="text-sm font-semibold text-gray-700">Товарные позиции</h2>
+          <h2 className="text-sm font-semibold text-gray-700">Тауар позициялары</h2>
         </div>
         <table className="min-w-full divide-y divide-gray-100 text-sm">
           <thead><tr>
-            <th className="px-4 py-2 text-left font-medium text-gray-500">Товар</th>
-            <th className="px-4 py-2 text-left font-medium text-gray-500">Место хранения</th>
-            <th className="px-4 py-2 text-right font-medium text-gray-500">Кол-во</th>
-            {doc.status === "DRAFT" && <th className="px-4 py-2 text-right font-medium text-gray-500">Доступно</th>}
+            <th className="px-4 py-2 text-left font-medium text-gray-500">Тауар</th>
+            <th className="px-4 py-2 text-left font-medium text-gray-500">Сақтау орны</th>
+            <th className="px-4 py-2 text-right font-medium text-gray-500">Саны</th>
+            {doc.status === "DRAFT" && <th className="px-4 py-2 text-right font-medium text-gray-500">Қол жетімді</th>}
           </tr></thead>
           <tbody className="divide-y divide-gray-50">
             {doc.items.map((item) => {
@@ -97,15 +97,15 @@ export default function DemoIssueDetail({ params }: { params: { id: string } }) 
         <div className={`border rounded-lg p-4 flex items-center justify-between ${canConfirm ? "bg-yellow-50 border-yellow-200" : "bg-red-50 border-red-200"}`}>
           <div>
             <p className={`text-sm font-medium ${canConfirm ? "text-yellow-800" : "text-red-700"}`}>
-              {canConfirm ? "Черновик готов к проведению" : "Недостаточно остатков"}
+              {canConfirm ? "Жоба растауға дайын" : "Қалдықтар жеткіліксіз"}
             </p>
             <p className={`text-xs mt-0.5 ${canConfirm ? "text-yellow-600" : "text-red-500"}`}>
-              {canConfirm ? "Нажмите «Провести», чтобы списать товары со склада" : "Пополните запасы перед проведением документа"}
+              {canConfirm ? "Тауарларды қоймадан есептен шығару үшін «Растау» түймесін басыңыз" : "Құжатты растамас бұрын қорларды толықтырыңыз"}
             </p>
           </div>
           {canConfirm && (
             <button onClick={confirm} className="px-4 py-2 bg-green-600 text-white text-sm font-medium rounded-lg hover:bg-green-700">
-              Провести документ
+              Құжатты растау
             </button>
           )}
         </div>
@@ -113,7 +113,7 @@ export default function DemoIssueDetail({ params }: { params: { id: string } }) 
 
       {doc.status === "CONFIRMED" && (
         <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-          <p className="text-sm text-green-700">Документ проведён. Товары списаны со склада.</p>
+          <p className="text-sm text-green-700">Құжат расталды. Тауарлар қоймадан есептен шығарылды.</p>
         </div>
       )}
     </div>

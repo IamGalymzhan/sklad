@@ -11,29 +11,29 @@ export default function DemoCategories() {
     e.preventDefault();
     if (!name.trim()) return;
     dispatch({ type: "CREATE_CATEGORY", name: name.trim(), description: desc.trim() || undefined });
-    dispatch({ type: "NOTIFY", message: "Категория создана", kind: "success" });
+    dispatch({ type: "NOTIFY", message: "Санат құрылды", kind: "success" });
     setName(""); setDesc(""); setOpen(false);
   }
 
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <div><h1 className="text-xl font-semibold">Категории товаров</h1><p className="text-sm text-gray-500">Справочник категорий</p></div>
-        <button onClick={() => setOpen(!open)} className="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700">+ Создать категорию</button>
+        <div><h1 className="text-xl font-semibold">Тауар санаттары</h1><p className="text-sm text-gray-500">Санаттар анықтамалығы</p></div>
+        <button onClick={() => setOpen(!open)} className="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700">+ Санат құру</button>
       </div>
 
       {open && (
         <form onSubmit={create} className="bg-blue-50 border border-blue-200 rounded-lg p-4 flex gap-3 items-end max-w-xl">
-          <div className="flex-1"><label className="text-xs font-medium text-gray-700 block mb-1">Название *</label><input value={name} onChange={(e) => setName(e.target.value)} className={inp} required /></div>
-          <div className="flex-1"><label className="text-xs font-medium text-gray-700 block mb-1">Описание</label><input value={desc} onChange={(e) => setDesc(e.target.value)} className={inp} /></div>
-          <button type="submit" className="px-3 py-2 bg-blue-600 text-white text-xs rounded-lg">Создать</button>
+          <div className="flex-1"><label className="text-xs font-medium text-gray-700 block mb-1">Атауы *</label><input value={name} onChange={(e) => setName(e.target.value)} className={inp} required /></div>
+          <div className="flex-1"><label className="text-xs font-medium text-gray-700 block mb-1">Сипаттамасы</label><input value={desc} onChange={(e) => setDesc(e.target.value)} className={inp} /></div>
+          <button type="submit" className="px-3 py-2 bg-blue-600 text-white text-xs rounded-lg">Құру</button>
           <button type="button" onClick={() => setOpen(false)} className="px-3 py-2 border border-gray-300 text-gray-600 text-xs rounded-lg">✕</button>
         </form>
       )}
 
       <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
         <table className="min-w-full divide-y divide-gray-200 text-sm">
-          <thead className="bg-gray-50"><tr><th className="px-4 py-3 text-left font-medium text-gray-500">Название</th><th className="px-4 py-3 text-left font-medium text-gray-500">Описание</th><th className="px-4 py-3 text-right font-medium text-gray-500">Товаров</th></tr></thead>
+          <thead className="bg-gray-50"><tr><th className="px-4 py-3 text-left font-medium text-gray-500">Атауы</th><th className="px-4 py-3 text-left font-medium text-gray-500">Сипаттамасы</th><th className="px-4 py-3 text-right font-medium text-gray-500">Тауарлар</th></tr></thead>
           <tbody className="divide-y divide-gray-100">
             {state.categories.map((c) => (
               <tr key={c.id} className="hover:bg-gray-50">

@@ -5,24 +5,24 @@ import { usePathname } from "next/navigation";
 import { useDemo } from "@/lib/demo/store";
 
 const NAV = [
-  { href: "/demo/dashboard", label: "Дашборд", group: null },
-  { href: null, label: "СПРАВОЧНИКИ", group: "header" },
-  { href: "/demo/products", label: "Товары", group: "refs" },
-  { href: "/demo/categories", label: "Категории", group: "refs" },
-  { href: "/demo/units", label: "Ед. измерения", group: "refs" },
-  { href: "/demo/warehouses", label: "Склады", group: "refs" },
-  { href: "/demo/locations", label: "Места хранения", group: "refs" },
-  { href: "/demo/suppliers", label: "Поставщики", group: "refs" },
-  { href: null, label: "ДОКУМЕНТЫ", group: "header" },
-  { href: "/demo/documents/receipts", label: "Поступления", group: "docs" },
-  { href: "/demo/documents/issues", label: "Выдачи", group: "docs" },
-  { href: "/demo/documents/transfers", label: "Перемещения", group: "docs" },
-  { href: null, label: "УЧЁТ", group: "header" },
-  { href: "/demo/stock", label: "Остатки", group: "stock" },
-  { href: "/demo/reports/stock", label: "Отчёты", group: "stock" },
-  { href: null, label: "АДМИНИСТРИРОВАНИЕ", group: "header" },
-  { href: "/demo/users", label: "Пользователи", group: "admin" },
-  { href: "/demo/audit", label: "Журнал действий", group: "admin" },
+  { href: "/demo/dashboard", label: "Басты бет", group: null },
+  { href: null, label: "АНЫҚТАМАЛЫҚТАР", group: "header" },
+  { href: "/demo/products", label: "Тауарлар", group: "refs" },
+  { href: "/demo/categories", label: "Санаттар", group: "refs" },
+  { href: "/demo/units", label: "Өлшем бірліктері", group: "refs" },
+  { href: "/demo/warehouses", label: "Қоймалар", group: "refs" },
+  { href: "/demo/locations", label: "Сақтау орындары", group: "refs" },
+  { href: "/demo/suppliers", label: "Жеткізушілер", group: "refs" },
+  { href: null, label: "ҚҰЖАТТАР", group: "header" },
+  { href: "/demo/documents/receipts", label: "Кірістер", group: "docs" },
+  { href: "/demo/documents/issues", label: "Шығыстар", group: "docs" },
+  { href: "/demo/documents/transfers", label: "Ауыстырулар", group: "docs" },
+  { href: null, label: "ЕСЕП", group: "header" },
+  { href: "/demo/stock", label: "Қалдықтар", group: "stock" },
+  { href: "/demo/reports/stock", label: "Есептер", group: "stock" },
+  { href: null, label: "ӘКІМШІЛІК", group: "header" },
+  { href: "/demo/users", label: "Пайдаланушылар", group: "admin" },
+  { href: "/demo/audit", label: "Әрекеттер журналы", group: "admin" },
 ];
 
 export function DemoSidebar() {
@@ -62,10 +62,10 @@ export function DemoSidebar() {
 
       <div className="p-3 border-t border-slate-700">
         <button
-          onClick={() => { if (confirm("Сбросить все данные демо к начальному состоянию?")) dispatch({ type: "RESET" }); }}
+          onClick={() => { if (confirm("Барлық демо деректерін бастапқы күйге қайтару керек пе?")) dispatch({ type: "RESET" }); }}
           className="w-full text-xs text-slate-500 hover:text-red-400 py-1 transition-colors"
         >
-          Сбросить демо-данные
+          Демо деректерін қалпына келтіру
         </button>
       </div>
     </aside>

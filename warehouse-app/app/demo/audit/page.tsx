@@ -3,27 +3,27 @@
 import { useDemo } from "@/lib/demo/store";
 
 const ACTION_LABELS: Record<string, string> = {
-  CREATE: "Создание",
-  UPDATE: "Изменение",
-  CONFIRM: "Подтверждение",
-  DELETE: "Удаление",
+  CREATE: "Құру",
+  UPDATE: "Өзгерту",
+  CONFIRM: "Растау",
+  DELETE: "Жою",
 };
 
 const ENTITY_LABELS: Record<string, string> = {
-  Product: "Товар",
-  Category: "Категория",
-  Unit: "Ед. изм.",
-  Warehouse: "Склад",
-  StorageLocation: "Место хранения",
-  Supplier: "Поставщик",
-  ReceiptDocument: "Поступление",
-  IssueDocument: "Выдача",
-  TransferDocument: "Перемещение",
-  User: "Пользователь",
+  Product: "Тауар",
+  Category: "Санат",
+  Unit: "Өлш. бір.",
+  Warehouse: "Қойма",
+  StorageLocation: "Сақтау орны",
+  Supplier: "Жеткізуші",
+  ReceiptDocument: "Кіріс",
+  IssueDocument: "Шығыс",
+  TransferDocument: "Ауыстыру",
+  User: "Пайдаланушы",
 };
 
 function formatDate(iso: string) {
-  return new Date(iso).toLocaleString("ru-RU", { day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit" });
+  return new Date(iso).toLocaleString("kk-KZ", { day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit" });
 }
 
 export default function DemoAudit() {
@@ -32,19 +32,19 @@ export default function DemoAudit() {
   return (
     <div className="space-y-4">
       <div>
-        <h1 className="text-xl font-semibold">Журнал действий</h1>
-        <p className="text-sm text-gray-500">История изменений в системе</p>
+        <h1 className="text-xl font-semibold">Әрекеттер журналы</h1>
+        <p className="text-sm text-gray-500">Жүйедегі өзгерістер тарихы</p>
       </div>
 
       <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
         <table className="min-w-full divide-y divide-gray-200 text-sm">
           <thead className="bg-gray-50">
             <tr>
-              <th className="px-4 py-3 text-left font-medium text-gray-500">Дата</th>
-              <th className="px-4 py-3 text-left font-medium text-gray-500">Пользователь</th>
-              <th className="px-4 py-3 text-left font-medium text-gray-500">Действие</th>
+              <th className="px-4 py-3 text-left font-medium text-gray-500">Күні</th>
+              <th className="px-4 py-3 text-left font-medium text-gray-500">Пайдаланушы</th>
+              <th className="px-4 py-3 text-left font-medium text-gray-500">Әрекет</th>
               <th className="px-4 py-3 text-left font-medium text-gray-500">Объект</th>
-              <th className="px-4 py-3 text-left font-medium text-gray-500">Детали</th>
+              <th className="px-4 py-3 text-left font-medium text-gray-500">Толық мәлімет</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
