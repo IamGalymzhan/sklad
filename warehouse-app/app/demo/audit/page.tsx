@@ -43,7 +43,7 @@ export default function DemoAudit() {
               <th className="px-4 py-3 text-left font-medium text-gray-500">Күні</th>
               <th className="px-4 py-3 text-left font-medium text-gray-500">Пайдаланушы</th>
               <th className="px-4 py-3 text-left font-medium text-gray-500">Әрекет</th>
-              <th className="px-4 py-3 text-left font-medium text-gray-500">Объект</th>
+              <th className="px-4 py-3 text-left font-medium text-gray-500">Нысан</th>
               <th className="px-4 py-3 text-left font-medium text-gray-500">Толық мәлімет</th>
             </tr>
           </thead>

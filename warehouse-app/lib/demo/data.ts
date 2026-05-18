@@ -5,15 +5,15 @@ export const INITIAL_STATE: DemoState = {
 
   users: [
     { id: "u-admin", name: "Әкімші", email: "admin@sklad.kz", role: "ADMIN", isActive: true, createdAt: "2026-04-01T08:00:00Z" },
-    { id: "u-store", name: "Петров Николай", email: "storekeeper@sklad.kz", role: "STOREKEEPER", isActive: true, createdAt: "2026-04-02T08:00:00Z" },
-    { id: "u-mgr", name: "Сидоров Андрей", email: "manager@sklad.kz", role: "MANAGER", isActive: true, createdAt: "2026-04-03T08:00:00Z" },
+    { id: "u-store", name: "Бекетов Нұрлан", email: "storekeeper@sklad.kz", role: "STOREKEEPER", isActive: true, createdAt: "2026-04-02T08:00:00Z" },
+    { id: "u-mgr", name: "Сәрсенов Айдар", email: "manager@sklad.kz", role: "MANAGER", isActive: true, createdAt: "2026-04-03T08:00:00Z" },
   ],
 
   categories: [
     { id: "cat-1", name: "Құрал-саймандар", description: "Қол және электр құралы", isActive: true },
     { id: "cat-2", name: "Шығыс материалдары", description: "Майлар, кабельдер, қолғаптар", isActive: true },
-    { id: "cat-3", name: "Қосалқы бөлшектер", description: "Болттар, гайкалар, бекіткіштер", isActive: true },
-    { id: "cat-4", name: "Орау материалдары", description: "Скотч, стрейч-таспа, қораптар", isActive: true },
+    { id: "cat-3", name: "Қосалқы бөлшектер", description: "Бұрандалар, сомындар, бекіткіштер", isActive: true },
+    { id: "cat-4", name: "Орау материалдары", description: "Жабысқақ таспа, стрейч-таспа, қораптар", isActive: true },
   ],
 
   units: [
@@ -30,10 +30,10 @@ export const INITIAL_STATE: DemoState = {
   ],
 
   locations: [
-    { id: "loc-a1", warehouseId: "wh-1", code: "A-01", name: "A стеллажы, 1-секция", isActive: true },
-    { id: "loc-a2", warehouseId: "wh-1", code: "A-02", name: "A стеллажы, 2-секция", isActive: true },
-    { id: "loc-b1", warehouseId: "wh-1", code: "B-01", name: "B стеллажы, 1-секция", isActive: true },
-    { id: "loc-b2", warehouseId: "wh-1", code: "B-02", name: "B стеллажы, 2-секция", isActive: true },
+    { id: "loc-a1", warehouseId: "wh-1", code: "A-01", name: "A сөресі, 1-секция", isActive: true },
+    { id: "loc-a2", warehouseId: "wh-1", code: "A-02", name: "A сөресі,2-секция", isActive: true },
+    { id: "loc-b1", warehouseId: "wh-1", code: "B-01", name: "B сөресі, 1-секция", isActive: true },
+    { id: "loc-b2", warehouseId: "wh-1", code: "B-02", name: "B сөресі,2-секция", isActive: true },
     { id: "loc-x1", warehouseId: "wh-2", code: "X-01", name: "X аймағы, 1-ұяшық", isActive: true },
     { id: "loc-x2", warehouseId: "wh-2", code: "X-02", name: "X аймағы, 2-ұяшық", isActive: true },
   ],
