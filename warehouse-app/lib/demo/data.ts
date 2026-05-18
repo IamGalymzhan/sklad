@@ -31,26 +31,26 @@ export const INITIAL_STATE: DemoState = {
 
   locations: [
     { id: "loc-a1", warehouseId: "wh-1", code: "A-01", name: "A сөресі, 1-секция", isActive: true },
-    { id: "loc-a2", warehouseId: "wh-1", code: "A-02", name: "A сөресі,2-секция", isActive: true },
+    { id: "loc-a2", warehouseId: "wh-1", code: "A-02", name: "A сөресі, 2-секция", isActive: true },
     { id: "loc-b1", warehouseId: "wh-1", code: "B-01", name: "B сөресі, 1-секция", isActive: true },
-    { id: "loc-b2", warehouseId: "wh-1", code: "B-02", name: "B сөресі,2-секция", isActive: true },
+    { id: "loc-b2", warehouseId: "wh-1", code: "B-02", name: "B сөресі, 2-секция", isActive: true },
     { id: "loc-x1", warehouseId: "wh-2", code: "X-01", name: "X аймағы, 1-ұяшық", isActive: true },
     { id: "loc-x2", warehouseId: "wh-2", code: "X-02", name: "X аймағы, 2-ұяшық", isActive: true },
   ],
 
   suppliers: [
-    { id: "sup-1", name: '"АлматыСнаб" ЖШС', contactPerson: "Иванов А.П.", phone: "+7 727 123-45-67", email: "info@almatysnab.kz", address: "Алматы, Сауда көшесі, 12", isActive: true },
+    { id: "sup-1", name: '"АлматыСнаб" ЖШС', contactPerson: "Жұмабеков А.П.", phone: "+7 727 123-45-67", email: "info@almatysnab.kz", address: "Алматы, Сауда көшесі, 12", isActive: true },
     { id: "sup-2", name: "ЖК Сейткали Б.", contactPerson: "Сейткали Берік", phone: "+7 701 234-56-78", email: "seitkali@mail.ru", isActive: true },
     { id: "sup-3", name: '"КазТехСнаб" ЖШС', contactPerson: "Ахметов Д.С.", phone: "+7 727 987-65-43", email: "kazteh@snab.kz", address: "Алматы, Абай даңғылы, 55", isActive: true },
   ],
 
   products: [
     { id: "p-drill", name: "Электр бұрғылауыш 750 Вт", sku: "DRILL-001", categoryId: "cat-1", unitId: "un-sht", minStock: 2, isActive: true, createdAt: "2026-04-05T10:00:00Z" },
-    { id: "p-perf", name: "Перфоратор Bosch 850 Вт", sku: "PERF-001", categoryId: "cat-1", unitId: "un-sht", minStock: 1, isActive: true, createdAt: "2026-04-05T10:10:00Z" },
-    { id: "p-tape", name: "Орау скотчы 50 мм", sku: "TAPE-001", categoryId: "cat-4", unitId: "un-up", minStock: 20, isActive: true, createdAt: "2026-04-06T09:00:00Z" },
+    { id: "p-perf", name: "Соққылы бұрғылауыш Bosch 850 Вт", sku: "PERF-001", categoryId: "cat-1", unitId: "un-sht", minStock: 1, isActive: true, createdAt: "2026-04-05T10:10:00Z" },
+    { id: "p-tape", name: "Орау жабысқақ таспасы 50 мм", sku: "TAPE-001", categoryId: "cat-4", unitId: "un-up", minStock: 20, isActive: true, createdAt: "2026-04-06T09:00:00Z" },
     { id: "p-oil", name: "Индустриалды май И-20А", sku: "OIL-001", categoryId: "cat-2", unitId: "un-kg", minStock: 50, isActive: true, createdAt: "2026-04-06T09:30:00Z" },
-    { id: "p-bolt", name: "Болт М8×40 DIN933 (мырыш)", sku: "BOLT-001", categoryId: "cat-3", unitId: "un-sht", minStock: 100, isActive: true, createdAt: "2026-04-07T11:00:00Z" },
-    { id: "p-nut", name: "Гайка М8 DIN934 (мырыш)", sku: "NUT-001", categoryId: "cat-3", unitId: "un-sht", minStock: 100, isActive: true, createdAt: "2026-04-07T11:05:00Z" },
+    { id: "p-bolt", name: "Бұранда М8×40 DIN933 (мырыш)", sku: "BOLT-001", categoryId: "cat-3", unitId: "un-sht", minStock: 100, isActive: true, createdAt: "2026-04-07T11:00:00Z" },
+    { id: "p-nut", name: "Сомын М8 DIN934 (мырыш)", sku: "NUT-001", categoryId: "cat-3", unitId: "un-sht", minStock: 100, isActive: true, createdAt: "2026-04-07T11:05:00Z" },
     { id: "p-cable", name: "Кабель NYM 3×2.5 мм²", sku: "CABLE-001", categoryId: "cat-2", unitId: "un-m", minStock: 30, isActive: true, createdAt: "2026-04-08T08:00:00Z" },
     { id: "p-glove", name: "Латексті қорғаныс қолғаптары", sku: "GLOVE-001", categoryId: "cat-2", unitId: "un-up", minStock: 10, isActive: true, createdAt: "2026-04-08T08:15:00Z" },
   ],
@@ -115,7 +115,7 @@ export const INITIAL_STATE: DemoState = {
     },
     {
       id: "iss-1002", documentNumber: "ISS-1002", warehouseId: "wh-1",
-      date: "2026-05-14", recipientName: '"СтройКомплекс" ЖШС', status: "CONFIRMED",
+      date: "2026-05-14", recipientName: '"ҚұрылысКомплекс" ЖШС', status: "CONFIRMED",
       createdById: "u-store", createdAt: "2026-05-14T10:00:00Z",
       items: [
         { id: "ii-3", productId: "p-oil", storageLocationId: "loc-b2", quantity: 20 },
@@ -180,7 +180,7 @@ export const INITIAL_STATE: DemoState = {
   // Audit log
   auditLog: [
     { id: "al-1", userId: "u-admin", action: "CREATE", entityType: "Product", entityId: "p-drill", createdAt: "2026-04-05T10:00:00Z", details: "Электр бұрғылауыш 750 Вт" },
-    { id: "al-2", userId: "u-admin", action: "CREATE", entityType: "Product", entityId: "p-perf", createdAt: "2026-04-05T10:10:00Z", details: "Перфоратор Bosch 850 Вт" },
+    { id: "al-2", userId: "u-admin", action: "CREATE", entityType: "Product", entityId: "p-perf", createdAt: "2026-04-05T10:10:00Z", details: "Соққылы бұрғылауыш Bosch 850 Вт" },
     { id: "al-3", userId: "u-admin", action: "CREATE", entityType: "Warehouse", entityId: "wh-1", createdAt: "2026-04-01T09:00:00Z", details: "Басты қойма" },
     { id: "al-4", userId: "u-admin", action: "CREATE", entityType: "Warehouse", entityId: "wh-2", createdAt: "2026-04-01T09:05:00Z", details: "№ 2 қойма" },
     { id: "al-5", userId: "u-store", action: "CREATE", entityType: "ReceiptDocument", entityId: "rec-1001", createdAt: "2026-05-08T09:00:00Z", details: "REC-1001" },
